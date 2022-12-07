@@ -1,0 +1,26 @@
+<h1>Update scooter {{scooter.tag}} (id={{scooter.id}})</h1>
+<form>
+  <div class="form-group">
+    <label for="Tag">Tag</label>
+    <input type="text" class="form-control" id="Tag" [(ngModel)]="scooter.tag" name="scooterTag">
+  </div>
+  <div class="form-group">
+    <label for="Status">Status</label>
+    <input type="text" class="form-control" id="Status" [(ngModel)]="scooter.status" name="scooterStatus">
+  </div>
+  <div class="form-group">
+    <label for="GPS-Location">GPS-Location</label>
+    <input type="text" class="form-control" id="GPS-Location" [(ngModel)]="scooter.gpsLocation"
+           name="scooterGpsLocation">
+  </div>
+  <div class="form-group">
+    <label for="Mileage">Mileage</label>
+    <input type="text" class="form-control" id="Mileage" [(ngModel)]="scooter.mileage" name="scooterMileage">
+  </div>
+  <div class="form-group">
+    <label for="Battery">Battery Charge</label>
+    <input type="text" class="form-control" id="Battery" [(ngModel)]="scooter.batteryCharge"
+           name="scooterBatteryCharge">
+  </div>
+  <button type="button" class="btn btn-danger" (click)="deleteScooterEvent.emit(scooter.id)">Delete</button>
+</form>

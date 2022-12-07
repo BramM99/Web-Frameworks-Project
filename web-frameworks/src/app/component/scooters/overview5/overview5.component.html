@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-6">
+    <h1>Scooters in your neighbourhood:</h1>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">tag</th>
+        <th scope="col">status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let scooter of scooterService.scooters">
+        <td [class.highlighted]="scooter.id === scooterService.selectedScooterId"
+            (click)="onSelectScooter(scooter.id)">{{scooter.tag}}
+        </td>
+        <td>{{scooter.status}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" (click)="onCreateScooter()">Add Scooter</button>
+  </div>
+  <div class="col-6">
+    <router-outlet *ngIf="scooterService.selectedScooterId >= 0"></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<h1>Update scooter {{scooterCopy.tag}} (id={{scooterCopy.id}})</h1>
+<form>
+  <div class="form-group">
+    <label for="Tag">Tag</label>
+    <input type="text" class="form-control" id="Tag" [(ngModel)]="scooterCopy.tag" name="scooterTag"
+           (change)="onChange()">
+  </div>
+
+  <div class="form-group">
+    <label for="Status">Status</label>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="Status"
+              aria-haspopup="true" aria-expanded="false">{{scooterCopy.status}}</button>
+      <!-- data-toggle="dropdown" -->
+      <div class="dropdown-menu">
+        <a class="dropdown-item">IDLE</a>
+        <a class="dropdown-item">IN USE</a>
+        <a class="dropdown-item">MAINTENANCE</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="GPS-Location">GPS-Location</label>
+    <input type="text" class="form-control" id="GPS-Location" [(ngModel)]="scooterCopy.gpsLocation"
+           name="scooterGpsLocation" (change)="onChange()">
+  </div>
+  <div class="form-group">
+    <label for="Mileage">Mileage</label>
+    <input type="text" class="form-control" id="Mileage" [(ngModel)]="scooterCopy.mileage" name="scooterMileage"
+           (change)="onChange()">
+  </div>
+  <div class="form-group">
+    <label for="Battery">Battery Charge</label>
+    <input type="text" class="form-control" id="Battery" [(ngModel)]="scooterCopy.batteryCharge"
+           name="scooterBatteryCharge" (change)="onChange()">
+  </div>
+  <button type="button" class="btn btn-primary" (click)="onCancelScooter(scooterCopy.id)">Cancel</button>
+  <button type="button" class="btn btn-primary" (click)="onResetScooter(editedScooterId)" [disabled]="!change">Reset
+  </button>
+  <button type="button" class="btn btn-primary" (click)="onClearScooter()">Clear</button>
+  <button type="button" class="btn btn-primary" (click)="onSaveScooter(scooterCopy)" [disabled]="!change">Save
+  </button>
+  <button type="button" class="btn btn-danger" (click)="onRemoveScooter(scooterCopy.id)" [disabled]="change">Delete
+  </button>
+</form>

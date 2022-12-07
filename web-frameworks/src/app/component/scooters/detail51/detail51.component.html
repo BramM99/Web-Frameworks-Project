@@ -1,0 +1,64 @@
+<h1> Update scooter {{scooterService.scooterCopy.tag}} (id={{scooterService.scooterCopy.id}})</h1>
+
+<!--Form-->
+
+<form ngForm (keydown.enter)="$event.preventDefault()">
+  <div class="field form-group">
+    <label for="Tag">Tag</label>
+    <input type="text" class="form-control advice" id="Tag" #scooterTag="ngModel"
+           [(ngModel)]="scooterService.scooterCopy.tag" name="scooterTag"
+           (change)="onChange()" minlength="10" [required]="true" required>
+    <div *ngIf="scooterTag.errors?.required">
+      Tag is required!
+    </div>
+    <div *ngIf="scooterTag.errors?.minlength">
+      Tag must be at least 10 characters long.
+    </div>
+
+    <label for="Status">Status</label>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="Status"
+              aria-haspopup="true" aria-expanded="false">{{scooterService.scooterCopy.status}} </button>
+
+      <!-- data-toggle="dropdown" -->
+      <div class="dropdown-menu" >
+        <a class="dropdown-item">IDLE</a>
+        <a class="dropdown-item">IN USE</a>
+        <a class="dropdown-item">MAINTENANCE </a>
+      </div>
+    </div>
+
+    <label for="GPS-Location">GPS-Location</label>
+    <input type="text" class="form-control" id="GPS-Location" [(ngModel)]="scooterService.scooterCopy.gpsLocation"
+           name="scooterGpsLocation" #scooterGpsLocation="ngModel" (change)="onChange()"
+           [required]="isRequired(scooterService.scooterCopy)" >
+    <div *ngIf="scooterGpsLocation.errors?.required">
+      GPS cannot be empty on IDLE!
+    </div>
+
+    <label for="Mileage">Mileage</label>
+    <input type="number" class="form-control" id="Mileage" [(ngModel)]="scooterService.scooterCopy.mileage"
+           name="scooterMileage"
+           (change)="onChange()">
+
+    <label for="Battery">Battery Charge</label>
+    <input type="number" class="form-control" id="Battery" [(ngModel)]="scooterService.scooterCopy.batteryCharge"
+           name="scooterBatteryCharge" #scooterBatteryCharge="ngModel" (change)="onChange()" min="0" max="100" [required]="true">
+    <div *ngIf="scooterBatteryCharge.errors?.min || scooterBatteryCharge.errors?.max">
+      Battery needs between 0 and 100 percent!
+    </div>
+  </div>
+</form>
+
+<!-- Buttons -->
+<button type="button" class="btn btn-primary" (click)="onCancelScooter(scooterService.scooterCopy.id)">Cancel</button>
+<button type="button" class="btn btn-primary" (click)="onResetScooter(scooterService.scooterCopy.id)"
+        [disabled]="!change">Reset
+</button>
+<button type="button" class="btn btn-primary" (click)="onClearScooter()">Clear</button>
+<button type="button" class="btn btn-primary" (click)="onSaveScooter(scooterService.scooterCopy)" [disabled]="(!change) || (scooterTag.errors?.required != null) || (scooterTag.errors?.minlength != null) || (scooterGpsLocation.errors?.required != null) || (scooterBatteryCharge.errors?.min != null || scooterBatteryCharge.errors?.max != null)">
+  Save
+</button>
+<button type="button" class="btn btn-danger" (click)="onRemoveScooter(scooterService.scooterCopy.id)"
+        [disabled]="change">Delete
+</button>

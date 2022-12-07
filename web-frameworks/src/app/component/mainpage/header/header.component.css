@@ -1,0 +1,21 @@
+#header {
+  margin: auto;
+  background-color: coral;
+}
+
+#header h1, h2, h3 {
+  color: blue;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thumbnail {
+  width: 10em;
+  height: 10em;
+  border: 0;
+  background: transparent;
+}

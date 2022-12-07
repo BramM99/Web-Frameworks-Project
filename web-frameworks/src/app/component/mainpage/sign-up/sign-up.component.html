@@ -1,0 +1,12 @@
+<div>
+  <form name="form" (ngSubmit)="onSubmit()"  class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input [(ngModel)]="form.eMail" type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+    <p>Be advised, the email you will fill in is going to be used to send a confirmation link</p>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input [(ngModel)]="form.passWord" type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+  </form>
+</div>
+

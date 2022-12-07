@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">tag</th>
+    <th scope="col">status</th>
+    <th scope="col">location</th>
+    <th scope="col">Mileage</th>
+    <th scope="col">Battery Charge</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let scooter of scooters">
+    <td>{{scooter.id}}</td>
+    <td>{{scooter.tag}}</td>
+    <td>{{scooter.status}}</td>
+    <td>{{(scooter.status !== 1) ? scooter.gpsLocation: ''}}</td>
+    <td>{{scooter.mileage}}</td>
+    <td>{{scooter.batteryCharge}}</td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <button class="btn btn-primary float-right"
+  (click)="addRandomScooter()">Add Scooter</button>
+</div>
+

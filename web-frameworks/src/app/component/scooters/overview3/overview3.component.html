@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-6">
+    <h1>Scooters in your neighbourhood:</h1>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">tag</th>
+        <th scope="col">status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let scooter of scooters">
+        <td [class.highlighted]="scooter.id === selectedScooterId"
+            (click)="onSelectScooter(scooter)">{{scooter.tag}}
+        </td>
+        <td>{{scooter.status}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" (click)="onCreateScooter()">Add Scooter</button>
+  </div>
+  <div class="col-6">
+    <app-detail3 *ngIf="selectedScooterId" [(editedScooterId)]="selectedScooterId"></app-detail3>
+    <p *ngIf="selectedScooterId == null">Select a scooter form the left page!</p>
+  </div>
+</div>
+

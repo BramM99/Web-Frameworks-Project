@@ -1,0 +1,18 @@
+<div id="header" class="row">
+  <div class="col-md-4">
+    <img class="thumbnail img-thumbnail float-left" src="assets/images/Logo%20Amsterdam.png"/>
+    <p class="align-text-bottom">Today Is</p>
+    <p class="align-text-bottom">{{today | date:'EEEE d LLLL yyyy'}}</p>
+  </div>
+  <div class="col-md-4">
+    <div class="container">
+      <h1>E-bikes Amsterdam</h1>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <p class="align-text-bottom">Get your kicks on route 66!</p>
+    <p *ngIf="firstname === null" class="align-text-bottom">Hello, visitor</p>
+    <p *ngIf="firstname" class="align-text-bottom">Hello, {{firstname}}!</p>
+    <img class="thumbnail img-thumbnail float-right" src="assets/images/Verkeersbord.png"/>
+  </div>
+</div>
